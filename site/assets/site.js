@@ -2,12 +2,6 @@
 (function () {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function isDark() {
-    const t = document.documentElement.dataset.theme;
-    if (t) return t === "dark";
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  }
-
   /* ---------- mermaid diagrams, themed from the CSS tokens ---------- */
   function renderDiagrams() {
     const nodes = document.querySelectorAll("pre.mermaid");
@@ -19,7 +13,7 @@
       theme: "base",
       fontFamily: v("--font-display"),
       themeVariables: {
-        darkMode: isDark(), background: v("--surface"), primaryColor: v("--accent-soft"),
+        darkMode: false, background: v("--surface"), primaryColor: v("--accent-soft"),
         primaryTextColor: v("--ink"), primaryBorderColor: v("--accent"), lineColor: v("--muted"),
         textColor: v("--ink"), edgeLabelBackground: v("--surface"), fontSize: "15px"
       }

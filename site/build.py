@@ -204,6 +204,7 @@ def build():
     for i, post in enumerate(posts):
         root = "../../"
         body = re.sub(r'href="code/([^"/]+)\.(\w+)"', lambda m: f'href="{root}code/{m.group(1)}/"', post["html"])
+        body = re.sub(r'href="(\d\d-[^"/]+)\.md(#[^"]*)?"', lambda m: f'href="../{m.group(1)}/{m.group(2) or ""}"', body)
         for m in re.finditer(r'href="code/([^"/]+)"', post["html"]):
             code_owner.setdefault(m.group(1), post)
         next_planned = next((p for p in planned if p["number"] > post["number"]), None)
