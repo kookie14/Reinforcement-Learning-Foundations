@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrap code-view">
+  <div class="eyebrow">Companion code{% if owner %} · Post {{ owner.number }}{% endif %}</div>
+  <h1>{{ name }}</h1>
+  <p class="meta"><a href="{{ root }}code/{{ name }}" download>Download {{ name }}</a></p>
+  <div class="prose">{{ code | safe }}</div>
+  {% if owner %}<p><a href="{{ root }}posts/{{ owner.slug }}/">← Back to “{{ owner.title }}”</a></p>{% endif %}
+</div>
+{% endblock %}

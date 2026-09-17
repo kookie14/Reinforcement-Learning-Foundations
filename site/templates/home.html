@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">A blog series on reinforcement learning</div>
+      <h1>Learning to make decisions that <em>pay off later</em>.</h1>
+      <p class="lede">A plain-language walk through the textbook <i>Reinforcement Learning: Foundations</i>. Every idea starts with intuition, then the equation, then a small example you can check by hand.</p>
+      {% if posts %}<a class="btn" href="{{ root }}posts/{{ posts[0].slug }}/">Start with post {{ posts[0].number }} →</a>{% endif %}
+    </div>
+    <figure class="gridworld" style="margin:0">
+      <div class="gw-head">
+        <span class="eyebrow">Value iteration · <b id="gw-sweep">sweep 0</b></span>
+        <span class="eyebrow">γ = 0.9</span>
+      </div>
+      <div class="gw" id="gw" role="img" aria-label="A 4 by 6 grid world. Each square shows how valuable it is to stand there and an arrow for the best move. Squares next to the +1 goal have value 1.00, and values shrink by a factor of 0.9 per step away."></div>
+      <figcaption class="gw-foot">
+        <p>Every sweep, each square looks one step ahead: its value is the best <i>reward + 0.9 × next square's value</i>. That idea gets its own post (06).</p>
+        <button class="btn ghost" id="gw-replay" type="button">Replay sweeps</button>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="path" id="path">
+    <h2>The learning path</h2>
+    <p>{{ planned_count }} posts, ordered for understanding rather than following the book's chapters.</p>
+    {% for part in parts %}
+    <section class="part">
+      <div><div class="eyebrow">Part {{ part.part }}</div><h3>{{ part.title }}</h3><p class="blurb">{{ part.blurb }}</p></div>
+      <ol class="posts">
+        {% for item in part.posts %}
+        <li>
+          {% if item.post %}
+          <a class="entry" href="{{ root }}posts/{{ item.post.slug }}/">
+            <span class="num">{{ item.number }}</span>
+            <span><span class="t">{{ item.post.title }}</span>
+              <span class="summary">{{ item.post.summary }}</span>
+              <span class="ch">{{ item.post.chapters }} · {{ item.post.minutes }} min read · {{ item.post.date_human }}</span></span>
+            <span class="status">Read →</span>
+          </a>
+          {% else %}
+          <div class="entry">
+            <span class="num">{{ item.number }}</span>
+            <span><span class="t">{{ item.title }}</span><span class="ch">{{ item.chapters }}</span></span>
+            <span class="status">Coming soon</span>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}

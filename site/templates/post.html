@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block progress %}<div class="progress" id="progress"></div>{% endblock %}
+{% block content %}
+<div class="wrap">
+  <header class="post-head">
+    <div class="eyebrow">Post {{ post.number }}{% if part %} · Part {{ part.part }}: {{ part.title }}{% endif %}</div>
+    <h1>{{ post.title }}</h1>
+    <p class="summary">{{ post.summary }}</p>
+    <div class="meta">
+      {% if post.date %}<span><time datetime="{{ post.date }}">{{ post.date_human }}</time></span>{% endif %}
+      <span><b>{{ post.minutes }} min</b> read</span>
+      <span>Book: <b>{{ post.chapters }}</b></span>
+    </div>
+  </header>
+  <div class="post-layout">
+    <article class="prose" id="prose">
+      <details class="toc-mobile"><summary>Contents</summary><ol>
+        {% for t in post.toc %}<li><a href="#{{ t.id }}">{{ t.title }}</a></li>{% endfor %}
+      </ol></details>
+      {{ body | safe }}
+      <nav class="pager" aria-label="More posts">
+        {% if prev %}<a href="{{ root }}posts/{{ prev.slug }}/"><span class="label">← Previous · {{ prev.number }}</span>{{ prev.title }}</a>{% endif %}
+        {% if next %}<a class="next" href="{{ root }}posts/{{ next.slug }}/"><span class="label">Next · {{ next.number }} →</span>{{ next.title }}</a>
+        {% elif next_planned %}<div class="next"><span class="label">Next · {{ next_planned.number }} · coming soon</span>{{ next_planned.title }}</div>{% endif %}
+      </nav>
+    </article>
+    <aside class="toc" aria-label="On this page">
+      <div class="eyebrow">On this page</div>
+      <ol>{% for t in post.toc %}<li><a href="#{{ t.id }}">{{ t.title }}</a></li>{% endfor %}</ol>
+    </aside>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
+{% if has_mermaid %}<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>{% endif %}
+{% endblock %}

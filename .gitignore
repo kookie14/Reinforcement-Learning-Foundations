@@ -1,0 +1,9 @@
+# build output (GitHub Actions rebuilds it)
+_site/
+__pycache__/
+
+# the source textbook is copyrighted; keep it local
+books/
+
+# personal planning notes
+plan.md

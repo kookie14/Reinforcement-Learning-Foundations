@@ -1,0 +1,101 @@
+{
+  "site": {
+    "name": "Delayed Reward",
+    "tagline": "Reinforcement learning, explained one idea at a time",
+    "description": "A plain-language blog series on the textbook Reinforcement Learning: Foundations. Intuition first, then the equation, then an example you can check by hand.",
+    "author": "kookie14",
+    "url": "https://kookie14.github.io/Reinforcement-Learning-Foundations",
+    "repo": "https://github.com/kookie14/Reinforcement-Learning-Foundations",
+    "book": "Reinforcement Learning: Foundations — Shie Mannor, Yishay Mansour and Aviv Tamar (October 2025)"
+  },
+  "parts": [
+    {
+      "part": 1,
+      "title": "The Problem",
+      "blurb": "What RL is and how to describe a decision problem.",
+      "posts": [
+        {
+          "number": "01",
+          "title": "What Is Reinforcement Learning?",
+          "chapters": "Ch. 1, 2, 9.1"
+        },
+        {
+          "number": "02",
+          "title": "States, Actions, Rewards and Policies",
+          "chapters": "Ch. 3.1–3.2, 5.1"
+        }
+      ]
+    },
+    {
+      "part": 2,
+      "title": "Planning: When You Know the Rules",
+      "blurb": "Finding the best strategy when the model of the world is given.",
+      "posts": [
+        {
+          "number": "03",
+          "title": "Dynamic Programming: Think Backwards",
+          "chapters": "Ch. 3.3–3.4, App. A"
+        },
+        {
+          "number": "04",
+          "title": "Adding Dice: Markov Chains",
+          "chapters": "Ch. 4"
+        },
+        {
+          "number": "05",
+          "title": "MDPs and the Value of a Situation",
+          "chapters": "Ch. 5"
+        },
+        {
+          "number": "06",
+          "title": "Discounting, Bellman, Value and Policy Iteration",
+          "chapters": "Ch. 6, 7"
+        }
+      ]
+    },
+    {
+      "part": 3,
+      "title": "Learning: When You Don't",
+      "blurb": "Finding a good strategy from experience alone.",
+      "posts": [
+        {
+          "number": "07",
+          "title": "Explore or Exploit? Bandits and UCB",
+          "chapters": "Ch. 14"
+        },
+        {
+          "number": "08",
+          "title": "Learn the Model First",
+          "chapters": "Ch. 10"
+        },
+        {
+          "number": "09",
+          "title": "Monte Carlo vs Temporal Differences",
+          "chapters": "Ch. 11.3–11.5.1"
+        },
+        {
+          "number": "10",
+          "title": "Q-learning and SARSA",
+          "chapters": "Ch. 11.5.2–11.6"
+        }
+      ]
+    },
+    {
+      "part": 4,
+      "title": "Big Worlds",
+      "blurb": "When there are too many states to list.",
+      "posts": [
+        {
+          "number": "11",
+          "title": "Function Approximation and DQN",
+          "chapters": "Ch. 12"
+        },
+        {
+          "number": "12",
+          "title": "Policy Gradients and PPO",
+          "chapters": "Ch. 13"
+        }
+      ]
+    }
+  ]
+}
